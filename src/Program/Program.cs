@@ -1,6 +1,7 @@
 ﻿using System;
 using CompAndDel.Pipes;
 using CompAndDel.Filters;
+using TwitterUCU;
 
 namespace CompAndDel
 {
@@ -38,6 +39,10 @@ namespace CompAndDel
         IPicture filterGreyscalePicture = pipeSerialSecond2.Send(picture2);
         provider2.SavePicture(filterGreyscalePicture, @".\lukeGreyscaleFilter.jpg");
 
+        var twitter = new TwitterImage();
+        Console.WriteLine(twitter.PublishToTwitter("GreyscaleFiltered Luke", @".\lukeGreyscaleFilter.jpg"));
+        Console.WriteLine(twitter.PublishToTwitter("NegativeFiltered Luke", @".\lukeNegativeFilter.jpg"));
+        Console.WriteLine(twitter.PublishToTwitter("FinalFiltered Luke", @".\img.jpg"));
         }
     }
 }
